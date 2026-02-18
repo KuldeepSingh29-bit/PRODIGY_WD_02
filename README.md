@@ -4,6 +4,9 @@
 
 A feature-rich stopwatch web application built with HTML, CSS, and JavaScript as part of the Prodigy InfoTech Web Development Internship.
 
+## 🔗 Live Demo
+**[Click here to view live site](https://kuldeepsingh29-bit.github.io/PRODIGY_WD_02/)**
+
 ---
 
 ## ✨ Features
