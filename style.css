@@ -1,0 +1,319 @@
+/* Global Styles */
+:root {
+    --bg-gradient-dark: linear-gradient(135deg, #232526, #414345);
+    --bg-gradient-light: linear-gradient(135deg, #fdfbfb, #ebedee);
+    --text-color-dark: #fff;
+    --text-color-light: #333;
+    --container-bg-dark: rgba(255, 255, 255, 0.1);
+    --container-bg-light: rgba(0, 0, 0, 0.05);
+    --timer-color-dark: #00ffcc;
+    --timer-color-light: #2d3436;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient-dark);
+    color: var(--text-color-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body.light-mode {
+    background: var(--bg-gradient-light);
+    color: var(--text-color-light);
+}
+
+.container {
+    background: var(--container-bg-dark);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+    /* Needed for absolute positioning of the GitHub icon */
+}
+
+body.light-mode .container {
+    background: var(--container-bg-light);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* GitHub Link Styles */
+.github-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.github-link:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.github-link svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    /* Added spacing to clear icons if needed */
+}
+
+header p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+/* Theme Toggle Switch */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.theme-switch-wrapper em {
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: #00b894;
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+/* Timer Display */
+.timer-display {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 3.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    letter-spacing: 3px;
+    color: var(--timer-color-dark);
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+    transition: color 0.5s ease, text-shadow 0.5s ease, background 0.5s ease;
+}
+
+body.light-mode .timer-display {
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--timer-color-light);
+    text-shadow: none;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    flex: 1;
+    min-width: 80px;
+    padding: 12px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    text-transform: uppercase;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Button Colors */
+.start {
+    background-color: #00b894;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 184, 148, 0.4);
+}
+
+.pause {
+    background-color: #fdcb6e;
+    color: #2d3436;
+    box-shadow: 0 5px 15px rgba(253, 203, 110, 0.4);
+}
+
+.lap {
+    background-color: #0984e3;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(9, 132, 227, 0.4);
+}
+
+.reset {
+    background-color: #d63031;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(214, 48, 49, 0.4);
+}
+
+.btn:disabled {
+    background-color: #636e72;
+    color: #b2bec3;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+/* Laps List */
+.laps-container {
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+    transition: border-color 0.5s ease;
+}
+
+body.light-mode .laps-container {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.laps-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: center;
+    color: inherit;
+}
+
+#lapsList {
+    list-style: none;
+    width: 100%;
+}
+
+#lapsList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    transition: background 0.5s ease;
+}
+
+body.light-mode #lapsList li {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#lapsList li span.lap-number {
+    color: #fdcb6e;
+    font-weight: bold;
+}
+
+body.light-mode #lapsList li span.lap-number {
+    color: #d35400;
+}
+
+#lapsList li span.lap-time {
+    color: inherit;
+}
+
+/* Custom Scrollbar */
+.laps-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.laps-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+body.light-mode .laps-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.5s ease;
+}
+
+body.light-mode footer {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
+    .timer-display {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+        padding: 10px;
+        min-width: 60px;
+    }
+}
